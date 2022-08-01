@@ -10,9 +10,9 @@
     </CartProduct>
 
     <div class="cart-total">
-      <span class="text--bold">CART SUBTOTAL:</span>
+      <span class="text--bold text--lightgrey">CART SUBTOTAL:</span>
       <!-- TODO use filter | pipe for currency presentation -->
-      <span class="text--bold"> {{ cartTotal }}</span>
+      <span class="text--bold text--darkgrey"> {{ cartTotal | currency }}</span>
     </div>
 
     <div class="button-footer">
@@ -57,6 +57,15 @@
       display: block;
       width: 100%;
       margin-top: 8px;
+    }
+  }
+
+  .text {
+    &--darkgrey {
+      color: #777777;
+    }
+    &--lightgrey {
+      color: #b5b5b5;
     }
   }
 }

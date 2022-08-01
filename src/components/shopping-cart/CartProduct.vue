@@ -5,7 +5,7 @@
     </span>
     <span>
       <p class="text--bold">Product name</p>
-      <p class="text--light">Quantity X Price</p>
+      <p class="text--light">Quantity X {{ 43.21 | currency }}</p>
     </span>
     <span>
       <CloseButton @click-event="cancelProduct" />
