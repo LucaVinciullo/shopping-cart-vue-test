@@ -4,6 +4,7 @@
     type="button"
     @click="clickEvent"
     :class="{ disabled: disabled }"
+    v-bind:tabindex="tabindex"
   >
     <span> {{ label }} </span>
   </button>
@@ -27,6 +28,14 @@ export default {
       if (!this.disabled) {
         this.$emit("click-event");
       }
+    },
+  },
+  computed: {
+    tabindex() {
+      if (this.disabled) {
+        return -1;
+      }
+      return 0;
     },
   },
 };

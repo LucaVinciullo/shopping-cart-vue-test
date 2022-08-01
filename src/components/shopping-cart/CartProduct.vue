@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import CloseButton from "@/components/shared/button/CloseButton.vue";
+import CloseButton from "@/shared/components/buttons/CloseButton.vue";
 
 export default {
   name: "CartProduct",

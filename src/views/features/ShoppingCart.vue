@@ -70,7 +70,7 @@
 
 <script>
 import CartProduct from "@/components/shopping-cart/CartProduct.vue";
-import TextButton from "@/components/shared/button/TextButton.vue";
+import TextButton from "@/shared/components/buttons/TextButton.vue";
 
 export default {
   name: "ShoppingCartView",
