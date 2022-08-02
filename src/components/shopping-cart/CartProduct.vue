@@ -1,15 +1,15 @@
 <template>
   <div class="cart-product" v-if="product">
-    <span>
+    <span class="product__image">
       <img :src="product.image" />
     </span>
     <span>
-      <p class="text--bold">{{ product.name }}</p>
-      <p class="text--light">
+      <p class="text--bold">{{ product.name | capitalize }}</p>
+      <p class="text--light product__text--light-grey">
         {{ product.qty }} X {{ product.price | currency }}
       </p>
     </span>
-    <span>
+    <span class="product__action">
       <CloseButton @click-event="cancelProduct" />
     </span>
   </div>
@@ -52,11 +52,12 @@ export default {
   display: flex;
 
   > span {
-    flex: 8;
-    padding: 0 4px;
+    flex: 1;
+    padding: 0 8px;
 
-    &:first-child {
-      flex: 3;
+    &.product__image {
+      padding-left: 0;
+      flex: 0;
       display: flex;
       justify-content: flex-start;
       img {
@@ -65,10 +66,15 @@ export default {
       }
     }
 
-    &:last-child {
-      flex: 1;
+    &.product__action {
+      flex: 0;
+      padding-right: 0;
       display: flex;
       justify-content: flex-end;
+    }
+
+    .product__text--light-grey {
+      color: #777777;
     }
   }
 }
