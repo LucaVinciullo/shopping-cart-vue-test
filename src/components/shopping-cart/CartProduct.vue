@@ -1,11 +1,13 @@
 <template>
-  <div class="cart-product">
+  <div class="cart-product" v-if="product">
     <span>
-      <img src="@/assets/logo.png" />
+      <img :src="product.image" />
     </span>
     <span>
-      <p class="text--bold">Product name</p>
-      <p class="text--light">Quantity X {{ 43.21 | currency }}</p>
+      <p class="text--bold">{{ product.name }}</p>
+      <p class="text--light">
+        {{ product.qty }} X {{ product.price | currency }}
+      </p>
     </span>
     <span>
       <CloseButton @click-event="cancelProduct" />
@@ -16,6 +18,15 @@
 <script>
 import CloseButton from "@/shared/components/buttons/CloseButton.vue";
 
+/**
+ *  model {
+ *    image: string
+ *    name: string
+ *    price: number
+ *    qty: number
+ *    sku: string
+ *  }
+ */
 export default {
   name: "CartProduct",
   components: {
@@ -23,8 +34,8 @@ export default {
   },
   props: {
     product: {
-      type: String,
-      required: true,
+      type: Object,
+      required: false,
     },
   },
   methods: {

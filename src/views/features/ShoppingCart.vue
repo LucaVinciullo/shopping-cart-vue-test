@@ -2,16 +2,15 @@
   <div class="shopping-cart">
     <CartProduct
       class="cart-item"
-      v-for="(product, index) in productList"
+      v-for="(product, index) in cartProductList"
       :key="index"
-      product="product"
+      :product="product"
       @cancel-product-event="cancelProduct(product, index)"
     >
     </CartProduct>
 
     <div class="cart-total">
       <span class="text--bold text--lightgrey">CART SUBTOTAL:</span>
-      <!-- TODO use filter | pipe for currency presentation -->
       <span class="text--bold text--darkgrey"> {{ cartTotal | currency }}</span>
     </div>
 
@@ -26,7 +25,7 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .shopping-cart {
   min-width: 290px;
   max-height: calc(100vh - 40px);
@@ -39,7 +38,9 @@
     padding: 16px;
     &:nth-child(even) {
       background-color: #f4f4f4;
-      // TODO darken the close button
+      button.close-button {
+        background-color: #777777;
+      }
     }
   }
 
@@ -80,17 +81,15 @@
 <script>
 import CartProduct from "@/components/shopping-cart/CartProduct.vue";
 import TextButton from "@/shared/components/buttons/TextButton.vue";
+import store from "@/store";
+import * as shoppingCartActiosn from "@/store/shopping-cart/shopping-cart.actions.type";
+import { mapGetters } from "vuex";
 
 export default {
   name: "ShoppingCartView",
   components: {
     CartProduct,
     TextButton,
-  },
-  data() {
-    return {
-      productList: ["TODO", "TODO", "TODO"],
-    };
   },
   methods: {
     viewCart() {
@@ -104,10 +103,15 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(["cartProductList"]),
     cartTotal() {
       // TODO reduce cart;
       return 12.34;
     },
+  },
+  mounted() {
+    // TODO parm "1"
+    store.dispatch(shoppingCartActiosn.GET_SHOPPING_CART, "1");
   },
 };
 </script>

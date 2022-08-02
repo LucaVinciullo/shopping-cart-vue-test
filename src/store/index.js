@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import ShoppingCart from "./shopping-cart/shopping-cart.module";
 
 Vue.use(Vuex);
 
@@ -8,5 +9,7 @@ export default new Vuex.Store({
   getters: {},
   mutations: {},
   actions: {},
-  modules: {},
+  modules: {
+    ShoppingCart,
+  },
 });
