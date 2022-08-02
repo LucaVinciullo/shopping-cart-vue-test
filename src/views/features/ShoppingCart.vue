@@ -105,8 +105,14 @@ export default {
   computed: {
     ...mapGetters(["cartProductList"]),
     cartTotal() {
-      // TODO reduce cart;
-      return 12.34;
+      if (this.cartProductList && this.cartProductList.length) {
+        return this.cartProductList.reduce((sum, product) => {
+          /* No need to round decimals */
+          sum += product.qty * product.price;
+          return sum;
+        }, 0);
+      }
+      return 0;
     },
   },
   mounted() {
