@@ -82,7 +82,7 @@
 import CartProduct from "@/components/shopping-cart/CartProduct.vue";
 import TextButton from "@/shared/components/buttons/TextButton.vue";
 import store from "@/store";
-import * as shoppingCartActiosn from "@/store/shopping-cart/shopping-cart.actions.type";
+import * as shoppingCartActions from "@/store/shopping-cart/shopping-cart.actions.type";
 import { mapGetters } from "vuex";
 
 export default {
@@ -98,8 +98,8 @@ export default {
     checkoutCart() {
       console.log("checkoutCart");
     },
-    cancelProduct(product, index) {
-      console.log("cancelProduct", product, index);
+    cancelProduct(product) {
+      store.dispatch(shoppingCartActions.DELETE_CART_PRODUCT, product.sku);
     },
   },
   computed: {
@@ -117,7 +117,7 @@ export default {
   },
   mounted() {
     // TODO parm "1"
-    store.dispatch(shoppingCartActiosn.GET_SHOPPING_CART, "1");
+    store.dispatch(shoppingCartActions.GET_SHOPPING_CART, "1");
   },
 };
 </script>

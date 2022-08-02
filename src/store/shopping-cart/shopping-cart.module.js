@@ -1,5 +1,9 @@
 import { CartApiService } from "@/core/api/cart-api.service";
-import { GET_SHOPPING_CART, RESET_STATE } from "./shopping-cart.actions.type";
+import {
+  GET_SHOPPING_CART,
+  RESET_STATE,
+  DELETE_CART_PRODUCT,
+} from "./shopping-cart.actions.type";
 import {
   CLEAR_STATE,
   SAVE_CART_PRODUCTS,
@@ -15,6 +19,14 @@ export const actions = {
   async [GET_SHOPPING_CART](context, id) {
     const { data } = await CartApiService.getShoppingCart(id);
     context.commit(SAVE_CART_PRODUCTS, data && data.items);
+  },
+  [DELETE_CART_PRODUCT](context, sku) {
+    if (context.state.cartProductList && typeof sku === "string") {
+      context.commit(
+        SAVE_CART_PRODUCTS,
+        context.state.cartProductList.filter((product) => product.sku !== sku)
+      );
+    }
   },
   [RESET_STATE]({ commit }) {
     commit(CLEAR_STATE);
