@@ -17,10 +17,14 @@
     <div class="button-footer">
       <TextButton
         label="VIEW CART"
-        :disabled="true"
+        :disabled="!!cartProductList?.length"
         @click-event="viewCart"
       ></TextButton>
-      <TextButton label="CHECKOUT" @click-event="checkoutCart"></TextButton>
+      <TextButton
+        label="CHECKOUT"
+        :disabled="!cartProductList?.length"
+        @click-event="checkoutCart"
+      ></TextButton>
     </div>
   </div>
 </template>
@@ -93,7 +97,8 @@ export default {
   },
   methods: {
     viewCart() {
-      console.log("viewCart");
+      // TODO parm "1"
+      store.dispatch(shoppingCartActions.GET_SHOPPING_CART, "1");
     },
     checkoutCart() {
       console.log("checkoutCart");
@@ -116,8 +121,7 @@ export default {
     },
   },
   mounted() {
-    // TODO parm "1"
-    store.dispatch(shoppingCartActions.GET_SHOPPING_CART, "1");
+    this.viewCart();
   },
 };
 </script>
