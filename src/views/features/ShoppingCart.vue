@@ -98,7 +98,6 @@ export default {
   },
   methods: {
     viewCart() {
-      // TODO parm "1"
       store.dispatch(shoppingCartActions.GET_SHOPPING_CART);
     },
     checkoutCart() {
