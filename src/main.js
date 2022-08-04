@@ -5,6 +5,7 @@ import store from "./store";
 import CurrencyFilter from "@/shared/filters/currency.filter";
 import CapitalizeFilter from "@/shared/filters/capitalize.filter";
 import ApiService from "@/core/api/api.service";
+import ViewLoader from "@/shared/components/ViewLoader.vue";
 
 Vue.config.productionTip = false;
 
@@ -12,6 +13,8 @@ Vue.filter("currency", CurrencyFilter);
 Vue.filter("capitalize", CapitalizeFilter);
 
 ApiService.init();
+
+Vue.component("ViewLoader", ViewLoader);
 
 new Vue({
   router,

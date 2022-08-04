@@ -1,23 +1,28 @@
 <template>
   <div id="app" class="typography">
-    <router-view />
+    <ViewLoader />
+    <div class="features-container">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <style lang="scss">
 #app {
-  height: 100vh;
-  width: 100vw;
+  .features-container {
+    height: 100vh;
+    width: 100vw;
 
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  background-color: #f0cac9;
+    background-color: #f0cac9;
 
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
 
 .typography {
