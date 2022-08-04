@@ -4,6 +4,7 @@
     <div class="features-container">
       <router-view />
     </div>
+    <SnackBarList />
   </div>
 </template>
 

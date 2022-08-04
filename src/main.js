@@ -6,6 +6,7 @@ import CurrencyFilter from "@/shared/filters/currency.filter";
 import CapitalizeFilter from "@/shared/filters/capitalize.filter";
 import ApiService from "@/core/api/api.service";
 import ViewLoader from "@/shared/components/ViewLoader.vue";
+import SnackBarList from "@/shared/components/SnackBarList.vue";
 
 Vue.config.productionTip = false;
 
@@ -15,6 +16,7 @@ Vue.filter("capitalize", CapitalizeFilter);
 ApiService.init();
 
 Vue.component("ViewLoader", ViewLoader);
+Vue.component("SnackBarList", SnackBarList);
 
 new Vue({
   router,
