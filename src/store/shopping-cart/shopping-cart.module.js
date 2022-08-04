@@ -1,13 +1,9 @@
 import { CartApiService } from "@/core/api/cart-api.service";
 import {
-  GET_SHOPPING_CART,
-  RESET_STATE,
   DELETE_CART_PRODUCT,
+  GET_SHOPPING_CART,
 } from "./shopping-cart.actions.type";
-import {
-  CLEAR_STATE,
-  SAVE_CART_PRODUCTS,
-} from "./shopping-cart.mutations.type";
+import { SAVE_CART_PRODUCTS } from "./shopping-cart.mutations.type";
 
 const initialState = {
   cartProductList: null,
@@ -28,18 +24,11 @@ export const actions = {
       );
     }
   },
-  [RESET_STATE]({ commit }) {
-    commit(CLEAR_STATE);
-  },
 };
 
 export const mutations = {
   [SAVE_CART_PRODUCTS](state, products) {
     state.cartProductList = products;
-  },
-  [CLEAR_STATE]() {
-    // TODO should use initialState
-    state.cartProductList = null;
   },
 };
 
