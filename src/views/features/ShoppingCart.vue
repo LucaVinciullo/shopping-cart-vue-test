@@ -88,6 +88,7 @@ import TextButton from "@/shared/components/buttons/TextButton.vue";
 import store from "@/store";
 import * as shoppingCartActions from "@/store/shopping-cart/shopping-cart.actions.type";
 import { mapGetters } from "vuex";
+import * as lodash from "lodash";
 
 export default {
   name: "ShoppingCartView",
@@ -98,10 +99,10 @@ export default {
   methods: {
     viewCart() {
       // TODO parm "1"
-      store.dispatch(shoppingCartActions.GET_SHOPPING_CART, "1");
+      store.dispatch(shoppingCartActions.GET_SHOPPING_CART);
     },
     checkoutCart() {
-      console.log("checkoutCart");
+      store.dispatch(shoppingCartActions.POST_CHECKOUT);
     },
     cancelProduct(product) {
       store.dispatch(shoppingCartActions.DELETE_CART_PRODUCT, product.sku);
@@ -110,7 +111,7 @@ export default {
   computed: {
     ...mapGetters(["cartProductList"]),
     cartTotal() {
-      if (this.cartProductList && this.cartProductList.length) {
+      if (lodash.get(this.cartProductList, "length")) {
         return this.cartProductList.reduce((sum, product) => {
           /* No need to round decimals */
           sum += product.qty * product.price;

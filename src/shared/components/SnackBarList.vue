@@ -1,5 +1,5 @@
 <template>
-  <div class="snack-bar-list" :show="snacks && snacks.length">
+  <div class="snack-bar-list" :show="snacks?.length">
     <div
       v-for="(snack, i) in snacks"
       :key="i"
