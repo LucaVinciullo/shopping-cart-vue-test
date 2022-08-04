@@ -26,7 +26,7 @@ export const mutations = {
     setTimeout(() => {
       state.snackBarList.shift();
       state.snackBarList = [...state.snackBarList];
-    }, 5000);
+    }, 2500);
   },
 };
 
